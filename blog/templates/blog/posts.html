@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block title %}
+		All Posts
+{% endblock title %}
+
+{% block body_content %}
+
+<body class="blog">
+  <div id="page">
+    <div class="container">
+      {% include "blog/includes/header.html" %}
+      <!-- #masthead -->
+      <div id="content" class="site-content">
+        <div id="primary" class="content-area column two-thirds">
+          <main id="main" class="site-main" role="main">
+            <div class="grid bloggrid">
+                {% for post in post_data %}
+              <article>
+                <header class="entry-header">
+                  <h1 class="entry-title">
+                    <a href="/posts/{{post.slug}}" rel="bookmark"
+                      >{{ post.title }}</a
+                    >
+                  </h1>
+                  <div class="entry-meta">
+                    <span class="Tagged-on"
+                      ><time class="entry-date published"
+                        >{{ post.created_on }}</time
+                      ></span
+                    >
+                    <span class="comments-link"
+                      ><a href="#">Leave a comment</a></span
+                    >
+                  </div>
+                  <div class="entry-thumbnail">
+                    <img src="{{ post.thumbnail.url }}" alt="" />
+                  </div>
+                </header>
+                <div class="entry-summary">
+                  <p>
+                    {{ post.text }}
+                    <a class="more-link" href="/posts/{{post.slug}}"
+                      >Read more</a
+                    >
+                  </p>
+                </div>
+                <footer class="entry-footer">
+                  <span class="cat-links">
+                    Tagged in <a href="#" rel="category tag">audio</a>,
+                    <a href="#" rel="category tag">embed</a>,
+                    <a href="#" rel="category tag">media</a>
+                  </span>
+                </footer>
+              </article>
+                {% endfor %}
+            </div>
+            <div class="clearfix"></div>
+            <nav class="pagination"></nav>
+          </main>
+          <!-- #main -->
+        </div>
+        <!-- #primary -->
+
+        <div id="secondary" class="column third">
+          <div id="sidebar-1" class="widget-area" role="complementary">
+            {% include "blog/includes/about-me.html" %}
+
+            <aside id="recent-posts-2" class="widget widget_recent_entries">
+              <h4 class="widget-title">Other Posts</h4>
+              <ul>
+                  {% for post in recent_posts %}
+
+                    <li>
+                      <a href="/posts/{{post.slug}}">{{ post.title | title }}</a>
+                    </li>
+                {% endfor %}
+              </ul>
+            </aside>
+          </div>
+          <!-- .widget-area -->
+        </div>
+        <!-- #secondary -->
+      </div>
+      <!-- #content -->
+    </div>
+    <!-- .container -->
+    {% include "blog/includes/footer.html" %}
+    <a href="#top" class="smoothup" title="Back to top"
+      ><span class="genericon genericon-collapse"></span
+    ></a>
+  </div>
+</body>
+{% endblock body_content %}

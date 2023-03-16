@@ -1,0 +1,10 @@
+<aside id="recent-comments-2" class="widget widget_recent_comments">
+    <h4 class="widget-title">Recent Comments</h4>
+    <ul id="recentcomments">
+        {% for comment in post_comments %}
+            <li class="recentcomments"> {{ comment.text }} | {{ comment.created_on }}</li>
+            {% empty %}
+                <li class="recentcomments" style="color: red"> No Comments for this Post !</li>
+        {% endfor %}
+        </ul>
+    </aside>

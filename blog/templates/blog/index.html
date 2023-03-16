@@ -1,0 +1,68 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Welcome {% endblock title %} 
+{% block javascript_load %}
+   
+{% endblock javascript_load %}
+
+{%block body_content %}
+<body
+  class="home page page-template page-template-template-portfolio page-template-template-portfolio-php"
+>
+  <div id="page">
+    <div class="container">
+{% include "blog/includes/header.html" %}    
+  <!-- #masthead -->
+      <div id="content" class="site-content">
+        <div class="entry-title" style="text-align: center;">Gallery</div>
+        
+        <div id="primary" class="content-area column full">
+          <main id="main" class="site-main">
+            <div class="grid portfoliogrid">
+                {% for item in gallery_items %}
+              <article class="hentry">
+                <header class="entry-header">
+                  <div class="entry-thumbnail">
+                    <a href="#"
+                      ><img
+                        src="{{ item.thumbnail.url }}"
+                        class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                        alt="p1"
+                    /></a>
+                  </div>
+                  <h2 class="entry-title">
+                    <a href="#" rel="bookmark"
+                      >{{ item.title}}</a
+                    >
+                  </h2>
+
+                  <a class="portfoliotype" href="#"
+                    >{{ item.tag__tag.title }}</a>
+                </header>
+              </article>
+                {% endfor %}
+            </div>
+            <!-- .grid -->
+
+            {% comment %} <nav class="pagination">
+              <span class="page-numbers current">1</span>
+              <a class="page-numbers" href="#">2</a>
+              <a class="next page-numbers" href="#">Next »</a>
+            </nav> {% endcomment %}
+            <br />
+          </main>
+          <!-- #main -->
+        </div>
+        <!-- #primary -->
+      </div>
+      <!-- #content -->
+    </div>
+    <!-- .container -->
+    <a href="#top" class="smoothup" title="Back to top"
+      ><span class="genericon genericon-collapse"></span
+    ></a>
+  </div>
+  <!-- #page -->
+  {% include "blog/includes/footer.html" %}
+</body>
+{% endblock body_content %}

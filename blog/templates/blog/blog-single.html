@@ -1,0 +1,101 @@
+{% include "base.html" %}
+{% load static %}
+
+{% block body_content %}
+    <body class="single single-post">
+    <div id="page">
+        <div class="container">
+            {% include "blog/includes/header.html" %}
+            <!-- #masthead -->
+            <div id="content" class="site-content">
+                <div id="primary" class="content-area column two-thirds">
+                    <main id="main" class="site-main" role="main">
+                        <article>
+                            <header class="entry-header">
+                                <h1 class="entry-title">{{ post.title }}</h1>
+                                <div class="entry-meta">
+                  <span class="Tagged-on"
+                  ><time class="entry-date published"
+                  >{{ post.created_on }}</time
+                  ></span
+                  >
+                                    <span class="comments-link"
+                                    ><a href="#">Leave a comment</a></span
+                                    >
+                                </div>
+                                <div class="entry-thumbnail">
+                                    <img src="{{ post.thumbnail.url }}" alt=""/>
+                                </div>
+                            </header>
+                            <!-- .entry-header -->
+                            <div class="entry-content">
+                                <p>
+                                    {{ post.text }}
+                                </p>
+                                <p>
+                                    The young English governess who came to teach her to read and
+                                    write disliked her so much that she gave up her place in three
+                                    months, and when other governesses came to try to fill it they
+                                    always went away in a shorter time than the first one. So if
+                                    Mary had not chosen to really want to know how to read books
+                                    she would never have learned her letters at all.
+                                </p>
+                            </div>
+                            <!-- .entry-content -->
+                            <footer class="entry-footer">
+                <span class="cat-links">
+                  Tagged in
+                  <a href="#" rel="category tag">audio</a>,
+                  <a href="#" rel="category tag">embed</a>,
+                  <a href="#" rel="category tag">media</a>
+                </span>
+                            </footer>
+                            <!-- .entry-footer -->
+                        </article>
+                        <!-- #post-## -->
+                        <nav class="navigation post-navigation" role="navigation">
+                            <h1 class="screen-reader-text">Post navigation</h1>
+                            <div class="nav-links">
+                                <div class="nav-previous">
+                                    <a href="#" rel="prev"
+                                    ><span class="meta-nav">←</span> Thanks for watching!</a
+                                    >
+                                </div>
+                            </div>
+                            <!-- .nav-links -->
+                        </nav>
+                        <!-- .navigation -->
+                        <!--comments form-->
+                    </main>
+                    <!-- #main -->
+                </div>
+                <div id="secondary" class="column third">
+                    <div id="sidebar-1" class="widget-area" role="complementary">
+                        {% include "blog/includes/about-me.html" %}
+                        <aside id="recent-posts-2" class="widget widget_recent_entries">
+                            <h4 class="widget-title">Recent Posts</h4>
+                            <ul>
+                                {% for post in recent_posts %}
+                                    <li>
+                                        <a href="/posts/{{ post.slug }}">{{ post.title | title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                        {% include "blog/includes/recent-comments.html" %}
+                        {% include "blog/includes/comments.html" %}
+                    </div>
+                    <!-- .widget-area -->
+                </div>
+                <!-- #secondary -->
+            </div>
+            <!-- #content -->
+        </div>
+        <!-- .container -->
+        {% include "blog/includes/footer.html" %}
+        <a href="#top" class="smoothup" title="Back to top"
+        ><span class="genericon genericon-collapse"></span
+        ></a>
+    </div>
+    </body>
+{% endblock body_content %}

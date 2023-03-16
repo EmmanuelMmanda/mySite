@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %} Oops! Not found{% endblock title %}
+
+{% block body_content %}
+<body class="blog">
+  <div id="page">
+    <div class="container">
+        {% include "blog/includes/header.html" %}
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="page-header">Oops! You have reached a dead-end | Resource not found</h1>
+          </div>
+      
+    </div>
+  </div>
+</body>
+{% endblock body_content %}
