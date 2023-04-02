@@ -52,8 +52,8 @@ def contact(request):
     except:
         raise Http404()
 
-#
-# def comment(request,slug):
-#             print(request)
-#             print(slug)
+
+def comment(request,slug):
+            print(request)
+            print(slug)
 
