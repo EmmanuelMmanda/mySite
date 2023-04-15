@@ -7,11 +7,5 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/mySite/wsgi.py" }
-  ],
-  "functions": {
-    "/*": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  ]
 }
