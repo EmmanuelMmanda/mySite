@@ -1,5 +1,4 @@
-from django import Http404
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 
@@ -9,12 +8,14 @@ from .models import Gallery, Tag, Post, Comment
 def homepage(request):
     try:
         gallery_items = Gallery.objects.all()
+        # gallery_tags = Tag.objects.filter(tag_title=gallery_items.tag)
+        # print(gallery_tags)
         render_html = render_to_string('blog/index.html', {
             'gallery_items': gallery_items
         })
         return HttpResponse(render_html)
-    except Gallery.DoesNotExist:
-        raise Http404()
+    except:
+        return Http404()
 
 
 def posts(request):
@@ -25,7 +26,7 @@ def posts(request):
                 "recent_posts": post_data,
             })
         return HttpResponse(render_html)
-    except Post.DoesNotExist:
+    except:
         raise Http404()
 
 
@@ -40,7 +41,7 @@ def post_detail(request, slug):
             'post_comments': post_comments
         })
         return HttpResponse(render_html)
-    except Post.DoesNotExist:
+    except:
         raise Http404()
 
 
@@ -52,6 +53,7 @@ def contact(request):
         raise Http404()
 
 
-def comment(request, slug):
-    print(request)
-    print(slug)
+def comment(request,slug):
+            print(request)
+            print(slug)
+
